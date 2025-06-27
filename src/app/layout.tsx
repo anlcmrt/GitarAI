@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar"; // Navbar'ı import ettik
+import Navbar from "./components/Navbar";
+import Link from "next/link"; // Footer'daki Link için gerekli
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +27,20 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
+        <footer className="text-sm text-gray-400 text-center mt-16 mb-6">
+          © {new Date().getFullYear()} myMelodyAI.{" "}
+          <Link href="/datenschutz" className="underline hover:text-purple-500">
+            Datenschutz
+          </Link>{" "}
+          |{" "}
+          <Link href="/impressum" className="underline hover:text-purple-500">
+            Impressum
+          </Link>
+        </footer>
       </body>
     </html>
   );
