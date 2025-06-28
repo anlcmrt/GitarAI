@@ -14,7 +14,7 @@ export default function Home() {
        {/* Görsel kutusu */}
       <div className="p-1 rounded-xl bg-white/60 shadow-xl backdrop-blur-sm max-w-md mb-10">
         <Image
-          src="/images/guitar.png"
+          src="/images/guitar.jpg"
           alt="Renkli Gitar"
           width={500}
           height={500}
