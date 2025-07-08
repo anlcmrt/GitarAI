@@ -8,7 +8,7 @@ export default function Home() {
     
     <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-gradient-to-br from-purple-100 to-white">
       <h1 className="text-4xl md:text-6xl font-bold text-center text-purple-800 mb-6">
-        myMelodyAI
+        GitarAI
       </h1>
 
        {/* Görsel kutusu */}
@@ -24,7 +24,7 @@ export default function Home() {
 
       <p className="text-xl md:text-2xl text-gray-700 text-center max-w-2xl mb-10">
         Gitar çalmayı öğren, akorları keşfet ve müziğinle kendini geliştir.
-        myMelodyAI senin dijital müzik yardımcın.
+        GitarAI senin dijital müzik yardımcın.
       </p>
 
       <Link href="/songs">
