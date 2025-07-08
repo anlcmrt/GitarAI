@@ -11,39 +11,43 @@ export default function Tuner() {
     let dataArray: Float32Array;
     let source: MediaStreamAudioSourceNode;
 
+    // Sabitler
+    const SIZE = 2048;
+    const MAX_SAMPLES = SIZE / 2;
+
     const init = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         audioContext = new AudioContext();
         source = audioContext.createMediaStreamSource(stream);
         analyser = audioContext.createAnalyser();
-        analyser.fftSize = 2048;
+        analyser.fftSize = SIZE;
         dataArray = new Float32Array(analyser.fftSize);
 
         source.connect(analyser);
 
         const autoCorrelate = (buf: Float32Array, sampleRate: number) => {
-          let SIZE = buf.length;
-          let MAX_SAMPLES = Math.floor(SIZE / 2);
           let best_offset = -1;
           let best_correlation = 0;
           let rms = 0;
 
+          // RMS hesapla
           for (let i = 0; i < SIZE; i++) {
-            let val = buf[i];
+            const val = buf[i];
             rms += val * val;
           }
           rms = Math.sqrt(rms / SIZE);
           if (rms < 0.01) return -1; // Çok düşük ses => çıkış yap
 
           let lastCorrelation = 1;
+
           for (let offset = 1; offset < MAX_SAMPLES; offset++) {
             let correlation = 0;
 
             for (let i = 0; i < MAX_SAMPLES; i++) {
-              correlation += Math.abs((buf[i]) - (buf[i + offset]));
+              correlation += Math.abs(buf[i] - buf[i + offset]);
             }
-            correlation = 1 - (correlation / MAX_SAMPLES);
+            correlation = 1 - correlation / MAX_SAMPLES;
 
             if (correlation > 0.9 && correlation > lastCorrelation) {
               best_correlation = correlation;
