@@ -21,7 +21,7 @@ export default function Navbar() {
           href="/"
           className="font-sans font-semibold text-3xl hover:text-purple-400 transition"
         >
-          myMelodyAI
+          GitarAI
         </Link>
       </div>
 

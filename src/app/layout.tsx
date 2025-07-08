@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "myMelodyAI",
+  title: "GitarAI",
   description: "Gitar çalanlar için akorlar, şarkı sözleri ve akort etme aracı",
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-grow">{children}</main>
         <footer className="text-sm text-gray-400 text-center mt-16 mb-6">
-          © {new Date().getFullYear()} myMelodyAI.{" "}
+          © {new Date().getFullYear()} GitarAI.{" "}
           <Link href="/datenschutz" className="underline hover:text-purple-500">
             Datenschutz
           </Link>{" "}
