@@ -13,7 +13,8 @@ function transposeChord(chord: string, amount: number): string {
   const match = chord.match(regex);
   if (!match) return chord;
 
-  const [_, root, suffix] = match;
+  // '_' kullanılmıyor, kaldırdım
+  const [root, suffix] = [match[1], match[2]];
   const index = notes.indexOf(root);
   if (index === -1) return chord;
 
@@ -53,8 +54,8 @@ export default function SongPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-4">
-  {song.artist} - {song.title}
-</h1>
+        {song.artist} - {song.title}
+      </h1>
 
       {/* Transpoze Butonları ve Başlık */}
       <div className="mb-4 flex gap-4 items-center justify-center">
