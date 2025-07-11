@@ -29,10 +29,44 @@ function transposeLyrics(lyrics: string, amount: number): string {
     .map((line) =>
       line
         .split(" ")
-        .map((word) => transposeChord(word, amount))
+        .map((word) => {
+          // Akor kelimeleri zaten köşeli parantez içinde olacak, 
+          // onları transpoze etmek için parantezi kaldırıp tekrar ekleyelim
+          if (/^\[.+\]$/.test(word)) {
+            const chordInside = word.slice(1, -1);
+            return `[${transposeChord(chordInside, amount)}]`;
+          }
+          // Diğer kelimeler olduğu gibi
+          return word;
+        })
         .join(" ")
     )
     .join("\n");
+}
+
+// Yeni fonksiyon: Köşeli parantez içindeki akorları renkli gösterir
+function renderLyrics(lyrics: string) {
+  const lines = lyrics.split("\n");
+
+  return lines.map((line, i) => {
+    const words = line.split(" ");
+
+    return (
+      <p key={i} className="whitespace-pre-wrap font-mono text-black">
+        {words.map((word, j) => {
+          if (/^\[.+\]$/.test(word)) {
+            const chord = word.slice(1, -1);
+            return (
+              <span key={j} className="text-purple-600 font-bold">
+                {chord + " "}
+              </span>
+            );
+          }
+          return word + " ";
+        })}
+      </p>
+    );
+  });
 }
 
 export default function SongPage() {
@@ -91,9 +125,9 @@ export default function SongPage() {
       </div>
 
       {/* Şarkı akorları ve sözleri */}
-      <pre className="whitespace-pre-wrap font-mono bg-neutral-800 text-purple-600 p-4 rounded">
-        {transposedLyrics}
-      </pre>
+      <div className="bg-purple-100 p-4 rounded">
+        {renderLyrics(transposedLyrics)}
+      </div>
     </div>
   );
 }

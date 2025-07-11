@@ -7,44 +7,44 @@ export const songs = [
     artist: "Duman",
     key: "G",
     lyrics: `
-Cm               Gm
+[Cm]               [Gm]
 Sevemedim ben bu günü
-Cm             Gm
+[Cm]             [Gm]
 Sevemedim başından
-Cm             Gm
+[Cm]             [Gm]
 Göremedim geçtiğini
-         F        Cm    F               Cm               
+         [F]        [Cm]    [F]               [Cm]               
 Yanıbaşımdan her yanımdan
 
-Cm                            Gm
+[Cm]                            [Gm]
 Gelemedim ben oyuna
-Cm                       Gm
+[Cm]                       [Gm]
 Gelemedim yaşımdan
-Cm                     Gm
+[Cm]                     [Gm]
 Kovaladım sevdiğimi
-F               Cm    F              Cm 
+[F]               [Cm]    [F]              [Cm] 
 Yanıbaşımdan her yanımdan    x2
 
-Cm                                 Gm
+[Cm]                                 [Gm]
 Yaşamadım ben bu günü
-Cm                           Gm
+[Cm]                           [Gm]
 Yaşamadım inadımdan
-Cm                         Gm
+[Cm]                         [Gm]
 Göremedim geçtiğini
-F               Cm    F              Cm 
+[F]               [Cm]    [F]              [Cm] 
 Yanıbaşımdan her yanımdan   x2
 
-C5  G5         F5
+[C5]  [G5]         [F5]
 Ellerin uzanmasın
-F5                      C5
+[F5]                      [C5]
 Uzak dursun dedim
-C5  G5              F5    
+[C5]  [G5]              [F5]    
 Sakın dokunmasın
-F5                 C5
+[F5]                 [C5]
 Hayal ettiklerim
-C5   G5         F5
+[C5]   [G5]         [F5]
 Bana yakışmasın
-F5                      C5
+[F5]                      [C5]
 İnancım yok benim
 `,
   },
@@ -54,40 +54,40 @@ F5                      C5
     artist: "Duman",
     key: "B",
     lyrics: `
-Bm           G      
+[Bm]           [G]      
 Uzak dur yakınıma
-Bm              G           
+[Bm]              [G]           
 Bu mesafe beni bozar
-Bm                 G   
+[Bm]                 [G]   
 Kimseler yanaşmasın
-A                   F#
+[A]                   [F#]
 Yalnızlık paylaşılmaz    
 
-Bm           G       F#
+[Bm]           [G]       [F#]
 İnceden hatırlarım
-Bm         G       F#
+[Bm]         [G]       [F#]
 O eski dostlukları
-Bm                     G   
+[Bm]                     [G]   
 Şimdi herkes ayrı uçta
-A                   F#
+[A]                   [F#]
 Kaderini inkar eder
 
-Bm             G      F#
+[Bm]             [G]      [F#]
 Kimi yere kimi över
-Bm         G        F#
+[Bm]         [G]        [F#]
 Her biri ilgi bekler
-Bm                      G   
+[Bm]                      [G]   
 Aman abim bulaşılmaz
-A                          F#
+[A]                          [F#]
 Yalnızlık paylaşılmaz
-A                 F#           A
+[A]                 [F#]           [A]
 Herkesle kaynaşılmaz    
 
-Bm            E                 G          F#             
+[Bm]            [E]                 [G]          [F#]             
 Hiç mi yalnız kalmadın şu garip dünyada  
-Bm        E               G                       
+[Bm]        [E]               [G]                       
 Ah o zaman anlarsın                     
-          F#                  G                     
+          [F#]                  [G]                     
 Yalnızlık paylaşılmaz   x3
 `,
   },
