@@ -12,21 +12,21 @@ export default function Navbar() {
 
   // Linklerde hover için ortak class
   const linkClass =
-    "font-sans font-semibold text-lg text-white relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-purple-400 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-purple-400 transition";
+    "font-[var(--font-inter)] font-semibold text-lg text-white relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-purple-400 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-purple-400 transition";
 
   return (
     <nav className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
-      <div className="text-3xl font-bold">
+      <div className="text-3xl font-bold font-[var(--font-inter)]">
         <Link
           href="/"
-          className="font-sans font-semibold text-3xl hover:text-purple-400 transition"
+          className="font-semibold text-3xl hover:text-purple-400 transition font-[var(--font-inter)]"
         >
           GitarAI
         </Link>
       </div>
 
       <button
-        className="md:hidden"
+        className="md:hidden font-[var(--font-inter)]"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
