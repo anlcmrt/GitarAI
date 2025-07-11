@@ -91,7 +91,7 @@ export default function SongPage() {
       </div>
 
       {/* Şarkı akorları ve sözleri */}
-      <pre className="whitespace-pre-wrap font-mono bg-neutral-800 text-white p-4 rounded">
+      <pre className="whitespace-pre-wrap font-mono bg-neutral-800 text-purple-600 p-4 rounded">
         {transposedLyrics}
       </pre>
     </div>
