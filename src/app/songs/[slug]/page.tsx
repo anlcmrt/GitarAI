@@ -13,7 +13,6 @@ function transposeChord(chord: string, amount: number): string {
   const match = chord.match(regex);
   if (!match) return chord;
 
-  // '_' kullanılmıyor, kaldırdım
   const [root, suffix] = [match[1], match[2]];
   const index = notes.indexOf(root);
   if (index === -1) return chord;
@@ -92,7 +91,7 @@ export default function SongPage() {
       </div>
 
       {/* Şarkı akorları ve sözleri */}
-      <pre className="whitespace-pre-wrap font-mono bg-gray-100 p-4 rounded">
+      <pre className="whitespace-pre-wrap font-mono bg-neutral-800 text-white p-4 rounded">
         {transposedLyrics}
       </pre>
     </div>
