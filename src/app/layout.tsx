@@ -1,11 +1,8 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"; // Footer için
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,16 +24,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-
-  const isSongsPage = pathname?.startsWith("/songs");
-
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col ${
-          isSongsPage ? "bg-neutral-900 text-white" : "bg-gray-50 text-gray-900"
-        }`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased
+          bg-neutral-900 text-white min-h-screen flex flex-col
+          sm:bg-gray-50 sm:text-gray-900`}
       >
         <Navbar />
         <main className="flex-grow">{children}</main>
