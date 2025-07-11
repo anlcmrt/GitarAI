@@ -28,18 +28,17 @@ export default function RootLayout({
     <html lang="tr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased
-          bg-neutral-900 text-white min-h-screen flex flex-col
-          sm:bg-gray-50 sm:text-gray-900`}
+          bg-purple-100 text-black min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-grow">{children}</main>
-        <footer className="text-sm text-gray-400 text-center mt-16 mb-6">
+        <footer className="text-sm text-gray-600 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
-          <Link href="/datenschutz" className="underline hover:text-purple-400">
+          <Link href="/datenschutz" className="underline hover:text-purple-600">
             Datenschutz
           </Link>{" "}
           |{" "}
-          <Link href="/impressum" className="underline hover:text-purple-400">
+          <Link href="/impressum" className="underline hover:text-purple-600">
             Impressum
           </Link>
         </footer>
