@@ -31,7 +31,7 @@ export default function Login() {
       if (user) {
         router.push('/');
       } else {
-        const savedEmail = localStorage.getItem('savedEmail');
+        const savedEmail = typeof window !== 'undefined' ? localStorage.getItem('savedEmail') : null;
         if (savedEmail) {
           setForm((prev) => ({ ...prev, email: savedEmail }));
           setRememberMe(true);
@@ -43,7 +43,8 @@ export default function Login() {
   }, [router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -61,10 +62,12 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, form.email, form.password);
       setSuccess(true);
 
-      if (rememberMe) {
-        localStorage.setItem('savedEmail', form.email);
-      } else {
-        localStorage.removeItem('savedEmail');
+      if (typeof window !== 'undefined') {
+        if (rememberMe) {
+          localStorage.setItem('savedEmail', form.email);
+        } else {
+          localStorage.removeItem('savedEmail');
+        }
       }
 
       setTimeout(() => {

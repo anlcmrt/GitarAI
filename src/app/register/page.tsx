@@ -37,11 +37,7 @@ export default function Register() {
     try {
       await setPersistence(auth, browserLocalPersistence);
 
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        form.email,
-        form.password
-      );
+      await createUserWithEmailAndPassword(auth, form.email, form.password);
 
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, {
