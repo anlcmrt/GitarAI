@@ -70,8 +70,12 @@ export default function Login() {
       setTimeout(() => {
         router.push('/');
       }, 1500);
-    } catch (err: any) {
-      setError(err.message || 'Giriş sırasında bir hata oluştu.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Giriş sırasında bir hata oluştu.');
+      }
     } finally {
       setLoading(false);
     }
@@ -83,7 +87,7 @@ export default function Login() {
       await setPersistence(auth, browserLocalPersistence);
       await signInWithPopup(auth, provider);
       router.push('/');
-    } catch {
+    } catch (err: unknown) {
       setError('Google ile giriş başarısız.');
     }
   };
