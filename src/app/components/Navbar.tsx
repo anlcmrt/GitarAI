@@ -6,20 +6,20 @@ import { useState } from "react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const menuClasses = `md:flex md:items-center md:gap-6 absolute md:static bg-gray-900 w-full left-0 md:w-auto md:bg-transparent transition-transform duration-300 ease-in-out z-50 ${
+  const menuClasses = `md:flex md:items-center md:gap-6 absolute md:static bg-white w-full left-0 md:w-auto md:bg-transparent transition-transform duration-300 ease-in-out z-50 ${
     isOpen ? "top-16" : "top-[-400px]"
   }`;
 
   const linkClass =
-    "font-semibold text-lg text-white relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-orange-400 transition";
+    "font-semibold text-lg text-gray-800 relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-orange-500 transition";
 
   return (
-    <nav className="bg-gray-900 text-white px-6 py-4 flex items-center justify-between relative">
+    <nav className="bg-white text-gray-800 px-6 py-4 flex items-center justify-between relative shadow-md">
       {/* Logo */}
       <div className="text-3xl font-bold">
         <Link
           href="/"
-          className="font-semibold text-3xl hover:text-orange-400 transition"
+          className="font-semibold text-3xl hover:text-orange-500 transition"
         >
           GitarAI
         </Link>
