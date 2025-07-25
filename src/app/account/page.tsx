@@ -58,9 +58,11 @@ export default function AccountPage() {
       setOldPassword('');
       setNewPassword('');
       setNewPasswordConfirm('');
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
-      setMessage('❌ Hata: ' + error.message);
+      const errorMessage =
+        error instanceof Error ? error.message : 'Bilinmeyen bir hata oluştu.';
+      setMessage('❌ Hata: ' + errorMessage);
     }
 
     setLoading(false);

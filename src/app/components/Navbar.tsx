@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
 
@@ -36,6 +36,16 @@ export default function Navbar() {
     await signOut(auth);
     setUser(null);
     setDropdownOpen(false);
+    setIsOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => {
+      if (prev) {
+        setDropdownOpen(false); // Menü kapanınca dropdown da kapansın
+      }
+      return !prev;
+    });
   };
 
   const menuClasses = `md:flex md:items-center md:gap-6 absolute md:static bg-white w-full left-0 md:w-auto md:bg-transparent transition-transform duration-300 ease-in-out z-50 ${
@@ -60,8 +70,10 @@ export default function Navbar() {
       {/* Menü düğmesi */}
       <button
         className="md:hidden text-2xl"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleMenu}
         aria-label="Menüyü Aç/Kapat"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
       >
         ☰
       </button>
@@ -115,6 +127,8 @@ export default function Navbar() {
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+              aria-haspopup="true"
+              aria-expanded={dropdownOpen}
             >
               {user.email}
             </button>

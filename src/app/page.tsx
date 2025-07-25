@@ -16,17 +16,15 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/onboarding"
-              className="bg-orange-600 text-white px-6 py-3 rounded-xl text-center hover:bg-orange-700 transition shadow-sm font-semibold"
-            >
-              Seviyeni Belirle
+            <Link href="/onboarding" passHref legacyBehavior>
+              <a className="bg-orange-600 text-white px-6 py-3 rounded-xl text-center hover:bg-orange-700 transition shadow-sm font-semibold">
+                Seviyeni Belirle
+              </a>
             </Link>
-            <Link
-              href="/about"
-              className="border border-gray-400 px-6 py-3 rounded-xl text-center hover:bg-gray-100 transition font-semibold"
-            >
-              Nasıl Çalışır?
+            <Link href="/about" passHref legacyBehavior>
+              <a className="border border-gray-400 px-6 py-3 rounded-xl text-center hover:bg-gray-100 transition font-semibold">
+                Nasıl Çalışır?
+              </a>
             </Link>
           </div>
 
