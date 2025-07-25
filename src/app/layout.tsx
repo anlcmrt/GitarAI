@@ -23,16 +23,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="tr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fef7ec] text-[#111] min-h-screen flex flex-col`}
       >
+        {/* Navigasyon */}
         <Navbar />
+
+        {/* Sayfa İçeriği */}
         <main className="flex-grow">{children}</main>
+
+        {/* Footer */}
         <footer className="text-sm text-gray-600 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
           <Link

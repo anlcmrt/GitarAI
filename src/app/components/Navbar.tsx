@@ -1,10 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Menü dışına tıklanınca dropdown'ı kapat
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+    setDropdownOpen(false);
+  };
 
   const menuClasses = `md:flex md:items-center md:gap-6 absolute md:static bg-white w-full left-0 md:w-auto md:bg-transparent transition-transform duration-300 ease-in-out z-50 ${
     isOpen ? "top-16" : "top-[-400px]"
@@ -77,6 +109,60 @@ export default function Navbar() {
             Hakkında
           </Link>
         </li>
+
+        {user ? (
+          <li className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+            >
+              {user.email}
+            </button>
+            {dropdownOpen && (
+              <ul className="absolute right-0 mt-2 bg-white border rounded shadow-md w-40 z-50">
+                <li>
+                  <Link
+                    href="/account"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      setIsOpen(false);
+                    }}
+                  >
+                    Hesabım
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                  >
+                    Çıkış Yap
+                  </button>
+                </li>
+              </ul>
+            )}
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link
+                href="/login"
+                className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+              >
+                Giriş Yap
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/register"
+                className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+              >
+                Kayıt Ol
+              </Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
