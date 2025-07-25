@@ -1,8 +1,9 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Link from "next/link"; // Footer için
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GitarAI",
-  description: "Gitar çalanlar için akorlar, şarkı sözleri ve akort etme aracı",
+  title: "GitarAI – Yapay Zeka ile Gitar Öğren",
+  description:
+    "GitarAI ile seviyeni belirle, yapay zeka destekli egzersizlerle gitar çalmayı öğren. Başlangıç, orta ve ileri düzey eğitimler seni bekliyor.",
 };
 
 export default function RootLayout({
@@ -27,18 +29,20 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased
-          bg-purple-100 text-black min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fef7ec] text-[#111] min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-grow">{children}</main>
         <footer className="text-sm text-gray-600 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
-          <Link href="/datenschutz" className="underline hover:text-purple-600">
+          <Link
+            href="/datenschutz"
+            className="underline hover:text-orange-600"
+          >
             Datenschutz
           </Link>{" "}
           |{" "}
-          <Link href="/impressum" className="underline hover:text-purple-600">
+          <Link href="/impressum" className="underline hover:text-orange-600">
             Impressum
           </Link>
         </footer>

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3e8ff; /* bg-purple-100 karşılığına yakın açık mor */
-  --foreground: #1f2937; /* Tailwind'in gray-800 gibi koyu gri/siyah ton */
-  --font-sans: 'Geist', Arial, Helvetica, sans-serif; /* Örnek font, layout'tan bağımsız */
+  --background: #fef7ec; /* Sıcak krem tonu – Anasayfa ile uyumlu */
+  --foreground: #111111; /* Modern siyah ton */
+  --font-sans: 'Geist', Arial, Helvetica, sans-serif;
   --font-mono: 'Geist Mono', monospace;
 }
 
@@ -20,4 +20,19 @@ body {
   font-family: var(--font-sans);
   margin: 0;
   padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
