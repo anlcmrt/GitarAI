@@ -1,4 +1,3 @@
-// src/app/login/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -90,7 +89,7 @@ export default function Login() {
       await setPersistence(auth, browserLocalPersistence);
       await signInWithPopup(auth, provider);
       router.push('/');
-    } catch (_err: unknown) {
+    } catch {
       setError('Google ile giriş başarısız.');
     }
   };
