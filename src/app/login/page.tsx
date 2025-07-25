@@ -87,7 +87,7 @@ export default function Login() {
       await setPersistence(auth, browserLocalPersistence);
       await signInWithPopup(auth, provider);
       router.push('/');
-    } catch (err: unknown) {
+    } catch (_err: unknown) {
       setError('Google ile giriş başarısız.');
     }
   };
@@ -161,11 +161,27 @@ export default function Login() {
           onClick={handleGoogleSignIn}
           className="flex items-center justify-center mx-auto px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition"
         >
-          <svg className="w-5 h-5 mr-2" viewBox="0 0 533.5 544.3">
-            <path fill="#4285f4" d="M533.5 278.4c0-17.9-1.5-35.1-4.3-51.8H272v98h147.1..." />
-            <path fill="#34a853" d="M272 544.3c72.9 0 134-24.1 178.7-65.4l-87.1-68..." />
-            <path fill="#fbbc04" d="M120.1 326.9c-7.6-22.8-7.6-47.4 0-70.2v-70.2H32.4..." />
-            <path fill="#ea4335" d="M272 107.7c38.4 0 73 13.2 100.3 39.1l75.1-75.1..." />
+          <svg
+            className="w-5 h-5 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#4285F4"
+              d="M24 9.5c3.9 0 7.1 1.6 9.3 3.8l6.9-6.9C36.6 2.7 30.7 0 24 0 14.6 0 6.7 5.8 2.6 14.1l8.1 6.3C12.1 14.3 17.6 9.5 24 9.5z"
+            />
+            <path
+              fill="#34A853"
+              d="M46.1 24.5c0-1.6-.1-2.8-.3-4.1H24v7.8h12.6c-.3 2.2-1.7 5.6-4.9 7.9l7.6 5.9c4.4-4 6.8-9.9 6.8-17.5z"
+            />
+            <path
+              fill="#FBBC05"
+              d="M10.7 28.3C9.8 26 9.4 23.6 9.4 21s.4-5 1.2-7.3L2.6 7.4C.9 10.7 0 15.2 0 21c0 5.8.9 10.3 2.6 13.6l8.1-6.3z"
+            />
+            <path
+              fill="#EA4335"
+              d="M24 42c-6.4 0-11.9-3.8-14.6-9.2l-8.1 6.3C6.7 42.2 14.6 48 24 48c6.7 0 12.6-2.2 17.3-5.9l-7.6-5.9c-2.4 1.6-5.4 2.8-9.7 2.8z"
+            />
           </svg>
           Google ile Giriş Yap
         </button>
