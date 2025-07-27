@@ -1,50 +1,66 @@
 // src/app/page.tsx
 import Link from "next/link";
-import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#fef7ec] text-[#111] flex items-center justify-center px-6 py-16">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
-        {/* Sol taraf: Başlık, Açıklama, Butonlar */}
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            Yapay Zeka ile <br className="hidden sm:inline" /> Gitar Öğren
+    <>
+      {/* HERO Bölümü */}
+      <section className="bg-[#1e81f3] text-white py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <h1 className="text-4xl md:text-5xl font-bold">
+            Yapay Zeka ile Gitar Öğren
           </h1>
-          <p className="text-lg text-gray-700">
-            Seviyene uygun içeriklerle gitar çalmayı GitarAI ile öğren. Yapay zeka destekli eğitim sistemiyle gelişimini takip et.
+          <p className="text-lg md:text-xl">
+            Yapay zeka destekli etkileşimli egzersizlerle <br className="hidden md:inline" />
+            gitar becerilerini geliştirin.
           </p>
+          <Link
+            href="/education"
+            className="inline-block bg-orange-500 hover:bg-orange-600 transition px-8 py-3 rounded-xl text-lg font-semibold mt-4"
+          >
+            Eğitime Başla
+          </Link>
+        </div>
+      </section>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/onboarding" passHref legacyBehavior>
-              <a className="bg-orange-600 text-white px-6 py-3 rounded-xl text-center hover:bg-orange-700 transition shadow-sm font-semibold">
-                Seviyeni Belirle
-              </a>
-            </Link>
-            <Link href="/about" passHref legacyBehavior>
-              <a className="border border-gray-400 px-6 py-3 rounded-xl text-center hover:bg-gray-100 transition font-semibold">
-                Nasıl Çalışır?
-              </a>
-            </Link>
+      {/* Kategoriler */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-5xl mx-auto text-center space-y-12">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold">
+              Kişiselleştirilmiş Eğitim Programı
+            </h2>
+            <p className="text-gray-600 mt-2 text-lg max-w-xl mx-auto">
+              Seviyenize ve ilgi alanlarınıza uygun bir eğitim programı ile adım adım ilerleyin.
+            </p>
           </div>
 
-          <div className="text-sm text-gray-600 mt-2">
-            🔎 Hızlı bir seviye testi yapmak ister misin? Başlamak için yeterli.
+          {/* Kartlar */}
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border text-center">
+              <div className="text-4xl mb-4">📘</div>
+              <h3 className="font-semibold text-lg">Temel Bilgiler</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Gitarın temellerini öğrenmek için temel bilgilerinizi oluşturun.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border text-center">
+              <div className="text-4xl mb-4">🎸</div>
+              <h3 className="font-semibold text-lg">Akorlar</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Akorlar, geçişler ve çalma teknikleri ile pratiğinizi geliştirin.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition border text-center">
+              <div className="text-4xl mb-4">🖐️</div>
+              <h3 className="font-semibold text-lg">Fingerstyle</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Parmaklarınızı kullanarak melodi ve armonileri birlikte çalın.
+              </p>
+            </div>
           </div>
         </div>
-
-        {/* Sağ taraf: Görsel */}
-        <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-          <Image
-            src="/guitar-demo.jpg"
-            alt="Gitar Öğrenme"
-            width={700}
-            height={500}
-            className="w-full h-auto object-cover"
-            priority
-          />
-        </div>
-      </div>
-    </main>
+      </section>
+    </>
   );
 }
