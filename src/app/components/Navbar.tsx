@@ -52,15 +52,15 @@ export default function Navbar() {
   }`;
 
   const linkClass =
-    "font-semibold text-lg text-gray-800 relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-orange-500 transition";
+    "font-medium text-base text-blue-800 relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-blue-600 transition";
 
   return (
-    <nav className="bg-white text-gray-800 px-6 py-4 flex items-center justify-between relative shadow-md">
+    <nav className="bg-transparent md:bg-white text-blue-800 px-6 py-4 flex items-center justify-between relative md:shadow-sm">
       {/* Logo */}
-      <div className="text-3xl font-bold">
+      <div className="text-2xl font-bold">
         <Link
           href="/"
-          className="font-semibold text-3xl hover:text-orange-500 transition"
+          className="font-semibold hover:text-blue-600 transition"
         >
           GitarAI
         </Link>
@@ -125,7 +125,7 @@ export default function Navbar() {
           <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+              className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
@@ -136,7 +136,7 @@ export default function Navbar() {
                 <li>
                   <Link
                     href="/account"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm text-blue-700 hover:bg-gray-100"
                     onClick={() => {
                       setDropdownOpen(false);
                       setIsOpen(false);
@@ -161,7 +161,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/login"
-                className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+                className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
               >
                 Giriş Yap
               </Link>
@@ -169,7 +169,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/register"
-                className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition"
+                className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
               >
                 Kayıt Ol
               </Link>

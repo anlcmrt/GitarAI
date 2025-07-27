@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
 const geistSans = Geist({
@@ -29,25 +29,25 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fef7ec] text-[#111] min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 min-h-screen flex flex-col`}
       >
         {/* Navigasyon */}
         <Navbar />
 
         {/* Sayfa İçeriği */}
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow px-4 md:px-6">{children}</main>
 
         {/* Footer */}
-        <footer className="text-sm text-gray-600 text-center mt-16 mb-6">
+        <footer className="text-sm text-gray-500 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
           <Link
             href="/datenschutz"
-            className="underline hover:text-orange-600"
+            className="underline hover:text-blue-600"
           >
             Datenschutz
           </Link>{" "}
           |{" "}
-          <Link href="/impressum" className="underline hover:text-orange-600">
+          <Link href="/impressum" className="underline hover:text-blue-600">
             Impressum
           </Link>
         </footer>
