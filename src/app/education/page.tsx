@@ -2,94 +2,59 @@
 
 import Link from 'next/link';
 
-type Lesson = {
-  id: number;
+type Category = {
+  id: string;
   title: string;
-  level: string;
-  active: boolean;
-  slug: string;
+  description: string;
 };
 
-const lessons: Lesson[] = [
+const categories: Category[] = [
   {
-    id: 1,
-    title: 'Gitarın Bölümleri',
-    level: 'Tüm seviyeler',
-    active: true,
-    slug: 'gitarin-bolumleri',
+    id: 'basics',
+    title: 'Temel Bilgiler',
+    description: 'Gitarı tanımaya buradan başla. Tutuluş, nota, akor kavramları.',
   },
   {
-    id: 2,
-    title: 'Gitar Nasıl Tutulur?',
-    level: 'Tüm seviyeler',
-    active: false,
-    slug: 'gitar-nasil-tutulur',
+    id: 'chords',
+    title: 'Akorlar',
+    description: 'İlk çalacağın Em, Am, C gibi temel akorları öğren.',
   },
   {
-    id: 3,
-    title: 'Nota Nedir?',
-    level: 'Tüm seviyeler',
-    active: false,
-    slug: 'nota-nedir',
+    id: 'rhythm',
+    title: 'Ritim ve Geçişler',
+    description: 'Akorlar arasında geçiş ve ritim duygusu kazandıran modüller.',
   },
   {
-    id: 4,
-    title: 'Do–Re–Mi ve C–D–E Harfleri',
-    level: 'Tüm seviyeler',
-    active: false,
-    slug: 'do-re-mi-c-d-e',
+    id: 'solo',
+    title: 'Solo & Teknikler',
+    description: 'Pentatonik diziler, doğaçlama ve teknik alıştırmalar.',
   },
   {
-    id: 5,
-    title: 'Akor Nedir?',
-    level: 'Tüm seviyeler',
-    active: false,
-    slug: 'akor-nedir',
-  },
-  {
-    id: 6,
-    title: 'Em Akoru Nedir?',
-    level: 'Başlangıç',
-    active: false,
-    slug: 'em-akoru-nedir',
+    id: 'fingerstyle',
+    title: 'Fingerstyle',
+    description: 'Tırnakla çalma, arpej, percussive teknikler ve ileri seviye çalışmalar.',
   },
 ];
 
 export default function EducationPage() {
   return (
-    <main className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">GitarAI Eğitim Paneli</h1>
-      <p className="mb-6 text-gray-700">Aşağıdaki sıralı modüllerle gitar öğrenmeye sıfırdan başlayabilirsin:</p>
-      <ul className="space-y-4">
-        {lessons.map((lesson) => (
-          <li
-            key={lesson.id}
-            className={`p-4 rounded-xl border flex justify-between items-center ${
-              lesson.active ? 'bg-white border-green-500' : 'bg-gray-100 border-gray-300 text-gray-400'
-            }`}
+    <main className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6">🎓 GitarAI Eğitim Paneli</h1>
+      <p className="text-gray-600 mb-8">
+        Gitar öğrenme yolculuğuna aşağıdaki kategorilerden başlayabilirsin.
+      </p>
+      <div className="grid md:grid-cols-2 gap-6">
+        {categories.map((cat) => (
+          <Link
+            key={cat.id}
+            href={`/education/${cat.id}`}
+            className="block border border-gray-300 rounded-xl p-5 hover:shadow-md hover:border-orange-400 transition"
           >
-            <div>
-              <div className="font-semibold">{lesson.title}</div>
-              <div className="text-sm">{lesson.level}</div>
-            </div>
-            {lesson.active ? (
-              <Link
-                href={`/lessons/${lesson.slug}`}
-                className="text-white bg-green-600 px-4 py-2 rounded hover:bg-green-700 transition"
-              >
-                Başla
-              </Link>
-            ) : (
-              <button
-                disabled
-                className="bg-gray-300 text-white px-4 py-2 rounded cursor-not-allowed"
-              >
-                Yakında
-              </button>
-            )}
-          </li>
+            <h2 className="text-xl font-semibold text-orange-600 mb-1">{cat.title}</h2>
+            <p className="text-gray-700 text-sm">{cat.description}</p>
+          </Link>
         ))}
-      </ul>
+      </div>
     </main>
   );
 }
