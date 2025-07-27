@@ -29,21 +29,18 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900 min-h-screen flex flex-col`}
       >
-        {/* Navigasyon */}
+        {/* Navbar sabit olacağı için içerik çakışmasın */}
         <Navbar />
 
         {/* Sayfa İçeriği */}
-        <main className="flex-grow px-4 md:px-6">{children}</main>
+        <main className="flex-grow">{children}</main>
 
         {/* Footer */}
         <footer className="text-sm text-gray-500 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
-          <Link
-            href="/datenschutz"
-            className="underline hover:text-blue-600"
-          >
+          <Link href="/datenschutz" className="underline hover:text-blue-600">
             Datenschutz
           </Link>{" "}
           |{" "}

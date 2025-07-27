@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
+/* Global Değişkenler */
 :root {
-  --background: #fef7ec; /* Sıcak krem tonu – Anasayfa ile uyumlu */
+  --background: #fef7ec; /* Anasayfa ile uyumlu sıcak krem tonu */
   --foreground: #111111; /* Modern siyah ton */
   --font-sans: 'Geist', Arial, Helvetica, sans-serif;
   --font-mono: 'Geist Mono', monospace;
@@ -14,6 +15,7 @@
   }
 }
 
+/* Temel Gövde Ayarları */
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -24,15 +26,34 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Tüm öğeler kutu modeli */
 * {
   box-sizing: border-box;
 }
 
+/* Link stilleri */
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* Buton font uyumu */
 button {
   font-family: inherit;
+}
+
+/* Tailwind’in preflight’ı bu kısımları zaten sıfırlar, ama garantiye almak iyidir. */
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+/* Resimlere geçiş efekti (isteğe bağlı) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.2s ease-in-out;
 }

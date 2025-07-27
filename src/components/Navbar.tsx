@@ -47,28 +47,23 @@ export default function Navbar() {
     });
   };
 
-  const menuClasses = `md:flex md:items-center md:gap-6 absolute md:static bg-white w-full left-0 md:w-auto md:bg-transparent transition-transform duration-300 ease-in-out z-50 ${
-    isOpen ? "top-16" : "top-[-400px]"
+  const linkClass =
+    "font-medium text-white hover:text-orange-300 transition";
+
+  const mobileMenuClasses = `md:flex md:items-center md:gap-6 absolute md:static w-full left-0 md:w-auto transition-transform duration-300 ease-in-out z-50 ${
+    isOpen ? "top-16 bg-[#1e81f3]" : "top-[-400px]"
   }`;
 
-  const linkClass =
-    "font-medium text-base text-blue-800 relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-blue-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-blue-600 transition";
-
   return (
-    <nav className="bg-transparent md:bg-white text-blue-800 px-6 py-4 flex items-center justify-between relative md:shadow-sm">
-      {/* Logo */}
-      <div className="text-2xl font-bold">
-        <Link
-          href="/"
-          className="font-semibold hover:text-blue-600 transition"
-        >
+    <nav className="fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between">
+      <div className="text-3xl font-bold text-white">
+        <Link href="/" className="hover:text-orange-300 transition">
           GitarAI
         </Link>
       </div>
 
-      {/* Menü düğmesi */}
       <button
-        className="md:hidden text-2xl"
+        className="md:hidden text-white text-2xl"
         onClick={toggleMenu}
         aria-label="Menüyü Aç/Kapat"
         aria-expanded={isOpen}
@@ -77,8 +72,7 @@ export default function Navbar() {
         ☰
       </button>
 
-      {/* Menü öğeleri */}
-      <ul className={menuClasses}>
+      <ul className={mobileMenuClasses}>
         <li>
           <Link href="/" className={linkClass} onClick={() => setIsOpen(false)}>
             Ana Sayfa
@@ -122,21 +116,21 @@ export default function Navbar() {
         </li>
 
         {user ? (
-          <li className="relative" ref={dropdownRef}>
+          <li className="relative text-white" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
+              className="text-sm font-medium hover:text-orange-300 transition"
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
               {user.email}
             </button>
             {dropdownOpen && (
-              <ul className="absolute right-0 mt-2 bg-white border rounded shadow-md w-40 z-50">
+              <ul className="absolute right-0 mt-2 bg-white text-gray-800 border rounded shadow-md w-40 z-50">
                 <li>
                   <Link
                     href="/account"
-                    className="block px-4 py-2 text-sm text-blue-700 hover:bg-gray-100"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100"
                     onClick={() => {
                       setDropdownOpen(false);
                       setIsOpen(false);
@@ -161,7 +155,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/login"
-                className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-white hover:text-orange-300 transition"
               >
                 Giriş Yap
               </Link>
@@ -169,7 +163,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/register"
-                className="text-sm font-medium text-blue-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-white hover:text-orange-300 transition"
               >
                 Kayıt Ol
               </Link>
