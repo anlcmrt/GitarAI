@@ -30,6 +30,14 @@ const allLessons: Lesson[] = [
   },
   {
     id: 3,
+    title: 'Akort Etme (Tuning)',
+    level: 'Tüm seviyeler',
+    slug: 'akort-etme',
+    category: 'basics',
+    active: false,
+  },
+  {
+    id: 4,
     title: 'Nota Nedir?',
     level: 'Tüm seviyeler',
     slug: 'nota-nedir',
@@ -37,14 +45,69 @@ const allLessons: Lesson[] = [
     active: false,
   },
   {
-    id: 6,
-    title: 'Em Akoru Nedir?',
+    id: 5,
+    title: 'Em Akoru',
     level: 'Başlangıç',
-    slug: 'em-akoru-nedir',
+    slug: 'em-akoru',
     category: 'chords',
     active: false,
   },
-  // Diğer kategorilerden modüller buraya eklenebilir
+  {
+    id: 6,
+    title: 'Am Akoru',
+    level: 'Başlangıç',
+    slug: 'am-akoru',
+    category: 'chords',
+    active: false,
+  },
+  {
+    id: 7,
+    title: 'C Akoru',
+    level: 'Başlangıç',
+    slug: 'c-akoru',
+    category: 'chords',
+    active: false,
+  },
+  {
+    id: 8,
+    title: 'G Akoru',
+    level: 'Başlangıç',
+    slug: 'g-akoru',
+    category: 'chords',
+    active: false,
+  },
+  {
+    id: 9,
+    title: 'D Akoru',
+    level: 'Başlangıç',
+    slug: 'd-akoru',
+    category: 'chords',
+    active: false,
+  },
+  {
+    id: 10,
+    title: 'Düş–Kalk Ritim',
+    level: 'Başlangıç',
+    slug: 'dus-kalk-ritim',
+    category: 'rhythm',
+    active: false,
+  },
+  {
+    id: 11,
+    title: 'Akor Geçişleri: Em–Am',
+    level: 'Başlangıç',
+    slug: 'akor-gecis-em-am',
+    category: 'rhythm',
+    active: false,
+  },
+  {
+    id: 12,
+    title: '3 Akorla Basit Şarkı',
+    level: 'Başlangıç',
+    slug: '3-akorla-sarki',
+    category: 'application',
+    active: false,
+  },
 ];
 
 export default function CategoryLessonsPage() {
@@ -57,7 +120,9 @@ export default function CategoryLessonsPage() {
 
   return (
     <main className="p-6 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">📚 {category?.toString().toUpperCase()} Modülleri</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        📚 {category?.toString().toUpperCase()} Modülleri
+      </h1>
 
       {filteredLessons.length === 0 && (
         <p className="text-gray-600">Bu kategoriye ait ders bulunamadı.</p>
@@ -68,7 +133,9 @@ export default function CategoryLessonsPage() {
           <li
             key={lesson.id}
             className={`p-4 rounded-xl border flex justify-between items-center ${
-              lesson.active ? 'bg-white border-green-500' : 'bg-gray-100 border-gray-300 text-gray-400'
+              lesson.active
+                ? 'bg-white border-green-500'
+                : 'bg-gray-100 border-gray-300 text-gray-400'
             }`}
           >
             <div>
