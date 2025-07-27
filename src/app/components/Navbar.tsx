@@ -18,7 +18,6 @@ export default function Navbar() {
     return () => unsubscribe();
   }, []);
 
-  // Menü dışına tıklanınca dropdown'ı kapat
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -42,7 +41,7 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsOpen((prev) => {
       if (prev) {
-        setDropdownOpen(false); // Menü kapanınca dropdown da kapansın
+        setDropdownOpen(false);
       }
       return !prev;
     });
@@ -96,7 +95,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            href="/dashboard"
+            href="/education"
             className={linkClass}
             onClick={() => setIsOpen(false)}
           >
