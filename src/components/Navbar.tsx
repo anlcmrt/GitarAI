@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -10,6 +11,9 @@ export default function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
+  const pathname = usePathname();
+
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -47,17 +51,26 @@ export default function Navbar() {
     });
   };
 
-  const linkClass =
-    "font-medium text-white hover:text-orange-400 transition";
+  const linkBaseClass = isHome
+    ? "text-white hover:text-orange-400"
+    : "text-gray-900 hover:text-orange-500";
+
+  const linkClass = `font-medium relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full ${
+    isHome ? "after:bg-orange-400" : "after:bg-orange-500"
+  } after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 ${linkBaseClass} transition`;
 
   const mobileMenuClasses = `md:flex md:items-center md:gap-6 absolute md:static w-full left-0 md:w-auto transition-transform duration-300 ease-in-out z-50 ${
-    isOpen ? "top-16 bg-transparent" : "top-[-400px]"
-  }`;
+    isOpen ? "top-16" : "top-[-400px]"
+  } ${isHome ? "bg-transparent" : "bg-white"}`;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between bg-transparent">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 px-6 py-4 flex items-center justify-between ${
+        isHome ? "bg-transparent" : "bg-white shadow-md"
+      }`}
+    >
       {/* Logo */}
-      <div className="text-3xl font-bold text-white">
+      <div className={`text-3xl font-bold ${isHome ? "text-white" : "text-gray-900"}`}>
         <Link href="/" className="hover:text-orange-400 transition">
           GitarAI
         </Link>
@@ -65,7 +78,7 @@ export default function Navbar() {
 
       {/* Mobil Menü Düğmesi */}
       <button
-        className="md:hidden text-white text-2xl"
+        className={`md:hidden text-2xl ${isHome ? "text-white" : "text-gray-800"}`}
         onClick={toggleMenu}
         aria-label="Menüyü Aç/Kapat"
         aria-expanded={isOpen}
@@ -76,53 +89,29 @@ export default function Navbar() {
 
       {/* Menü Öğeleri */}
       <ul className={mobileMenuClasses}>
-        <li>
-          <Link href="/" className={linkClass} onClick={() => setIsOpen(false)}>
-            Ana Sayfa
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/onboarding"
-            className={linkClass}
-            onClick={() => setIsOpen(false)}
-          >
-            Seviye Belirle
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/education"
-            className={linkClass}
-            onClick={() => setIsOpen(false)}
-          >
-            Eğitim Paneli
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/tuner"
-            className={linkClass}
-            onClick={() => setIsOpen(false)}
-          >
-            Akort Et
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/about"
-            className={linkClass}
-            onClick={() => setIsOpen(false)}
-          >
-            Hakkında
-          </Link>
-        </li>
+        {[
+          { href: "/", label: "Ana Sayfa" },
+          { href: "/onboarding", label: "Seviye Belirle" },
+          { href: "/education", label: "Eğitim Paneli" },
+          { href: "/tuner", label: "Akort Et" },
+          { href: "/about", label: "Hakkında" },
+        ].map((item) => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className={linkClass}
+              onClick={() => setIsOpen(false)}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
 
         {user ? (
-          <li className="relative text-white" ref={dropdownRef}>
+          <li className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="text-sm font-medium hover:text-orange-400 transition"
+              className={`text-sm font-medium ${isHome ? "text-white hover:text-orange-400" : "text-gray-800 hover:text-orange-500"} transition`}
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
@@ -158,7 +147,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/login"
-                className="text-sm font-medium text-white hover:text-orange-400 transition"
+                className={`text-sm font-medium ${linkBaseClass}`}
               >
                 Giriş Yap
               </Link>
@@ -166,7 +155,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/register"
-                className="text-sm font-medium text-white hover:text-orange-400 transition"
+                className={`text-sm font-medium ${linkBaseClass}`}
               >
                 Kayıt Ol
               </Link>

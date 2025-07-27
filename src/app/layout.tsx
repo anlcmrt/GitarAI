@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -29,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900 min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        {/* Navbar sabit olacağı için içerik çakışmasın */}
+        {/* Navbar sabit ve entegre şekilde görünüyor */}
         <Navbar />
 
         {/* Sayfa İçeriği */}
@@ -40,7 +39,10 @@ export default function RootLayout({
         {/* Footer */}
         <footer className="text-sm text-gray-500 text-center mt-16 mb-6">
           © {new Date().getFullYear()} GitarAI.{" "}
-          <Link href="/datenschutz" className="underline hover:text-blue-600">
+          <Link
+            href="/datenschutz"
+            className="underline hover:text-blue-600"
+          >
             Datenschutz
           </Link>{" "}
           |{" "}
