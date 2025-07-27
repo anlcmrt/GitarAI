@@ -48,22 +48,20 @@ export default function Navbar() {
   };
 
   const linkClass =
-    "font-medium text-white relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-white after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-orange-300 transition";
+    "font-medium text-white relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-orange-300 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 hover:text-orange-300 transition";
 
   const mobileMenuClasses = `md:flex md:items-center md:gap-6 absolute md:static w-full left-0 md:w-auto transition-transform duration-300 ease-in-out z-50 ${
-    isOpen ? "top-16 bg-black bg-opacity-90" : "top-[-400px]"
+    isOpen ? "top-16 bg-[#1e81f3]" : "top-[-400px]"
   }`;
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-4 flex items-center justify-between">
-      {/* Logo */}
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-50 px-6 py-4 flex items-center justify-between backdrop-blur-md">
       <div className="text-3xl font-bold text-white">
         <Link href="/" className="hover:text-orange-300 transition">
           GitarAI
         </Link>
       </div>
 
-      {/* Mobil Menü Düğmesi */}
       <button
         className="md:hidden text-white text-2xl"
         onClick={toggleMenu}
@@ -74,7 +72,6 @@ export default function Navbar() {
         ☰
       </button>
 
-      {/* Menü Öğeleri */}
       <ul className={mobileMenuClasses}>
         <li>
           <Link href="/" className={linkClass} onClick={() => setIsOpen(false)}>
